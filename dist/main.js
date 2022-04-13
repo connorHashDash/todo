@@ -16,7 +16,7 @@
   \*************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"*{\\n  margin: 0;\\n  padding: 0;\\n}\\n\\nhtml, body {\\n  height: 100%;\\n}\\n\\n#content{\\n  position: relative;\\n  display: flex;\\n  height: 100%;\\n  width: 100%;\\n}\\n\\n#leftsidenav {\\n  height: 100%;\\n  width: 12%;\\n  background-color: #CBCBCB;\\n}\\n\\n#rightsidediv{\\n  width: 100%;\\n}\\n\\n#topnav{\\n  height: 4%;\\n  width: 100%;\\n  background-color: #EAEAEA ;\\n}\\n\\n#display{\\n  width: 100%;\\n}\\n\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://todo/./src/style.css?./node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"*{\\n  margin: 0;\\n  padding: 0;\\n  font-family: arial;\\n}\\n\\nhtml, body {\\n  height: 100%;\\n}\\n\\n#content{\\n  position: relative;\\n  display: flex;\\n  height: 100%;\\n  width: 100%;\\n}\\n\\n#leftsidenav {\\n  display: flex;\\n  flex-direction: column;\\n  align-items: center;\\n  height: 100%;\\n  width: 270px;\\n  background-color: #CBCBCB;\\n}\\n\\n#rightsidediv{\\n  width: 100%;\\n}\\n\\n#topnav{\\n  height: 4%;\\n  width: 100%;\\n  background-color: #EAEAEA ;\\n}\\n\\n#display{\\n  width: 100%;\\n}\\n\\n#iconDiv{\\n  display: flex;\\n  width: 100px;\\n  height: fit-content;\\n  margin-top: 40px;\\n  margin-bottom: 30%;\\n}\\n\\n#Logo{\\n  width: inherit;\\n  height: 100%;\\n}\\n\\n#formDiv{\\n  display: flex;\\n  flex-direction: column;\\n  height: 100%;\\n}\\n\\n#form{\\n  display: flex;\\n  flex-direction: column;\\n  justify-content: space-between;\\n  align-items: center;\\n  height: inherit;\\n  padding-bottom: 10%;\\n}\\n\\n.FormItem{\\n  text-align: center;\\n  font-size: 1.2rem;\\n}\\n\\ninput{\\n  border: 0;\\n}\\n\\n\\n#descDiv{\\n  display: flex;\\n  flex-direction: column;\\n  justify-content: space-between;\\n  height: 10rem;\\n}\\n\\n#descLabel{\\n}\\n\\n#desc{\\n  margin-top: 1rem;\\n  height: 90%;\\n  resize: none;\\n}\\n\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://todo/./src/style.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -116,7 +116,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _leftbar_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./leftbar.js */ \"./src/leftbar.js\");\n\n\n\n\nconsole.log((0,_leftbar_js__WEBPACK_IMPORTED_MODULE_1__.sideBarContents)())\n\n\n//# sourceURL=webpack://todo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _leftbar_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./leftbar.js */ \"./src/leftbar.js\");\n\n\n\n\nlet todooey = (() => {\n  (0,_leftbar_js__WEBPACK_IMPORTED_MODULE_1__.populateSideBar)()\n})()\n\n\n//# sourceURL=webpack://todo/./src/index.js?");
 
 /***/ }),
 
@@ -126,7 +126,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"sideBarContents\": () => (/* binding */ sideBarContents)\n/* harmony export */ });\nlet sideBarContents = () => {\n  let iconDiv = document.createElement('div')\n  let icon = 'make Icon';\n  let button = document.createElement('div').id = 'addButton';\n \n  iconDiv.id = 'iconDiv';\n  return {iconDiv, icon, button}\n};\n\n\nfunction populateSideBar() {\n  let sidenav = document.getElementById('leftsidenav')\n\n}\n\n\n\n\n//# sourceURL=webpack://todo/./src/leftbar.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"populateSideBar\": () => (/* binding */ populateSideBar)\n/* harmony export */ });\n/* harmony import */ var _TodooeyLogo_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TodooeyLogo.png */ \"./src/TodooeyLogo.png\");\nconst sidenav = document.getElementById('leftsidenav')\n;\n\nlet sideBarForm = (() => {\n\n  //Creating form elements\n  const formDiv = document.createElement('div')\n  const form = document.createElement('form')\n\n  const titleDiv = document.createElement('div')\n  const titleLabel = document.createElement('label')\n  const title = document.createElement('input')\n\n  const descDiv = document.createElement('div')\n  const descLabel = document.createElement('label')\n  const desc = document.createElement('textarea')\n\n  const dueDateDiv = document.createElement('div')\n  const dueDateLabel = document.createElement('label')\n  const dueDate = document.createElement('input')\n\n  const buttonDiv = document.createElement('div')\n  const button = document.createElement('button')\n  \n  //form ID's\n  formDiv.id = 'formDiv'\n  form.id = 'form'\n  \n  titleDiv.className =`FormItem`\n  titleDiv.id =`titleDiv`\n  titleLabel.id = 'titleLabel'\n  title.id = 'title'\n  \n  descDiv.className =`FormItem`\n  descDiv.id = 'descDiv'\n  descLabel.id = 'descLabel'\n  desc.id = 'desc'\n\n  dueDateDiv.className =`FormItem`\n  dueDateDiv.id = `dueDateDiv`\n  dueDateLabel.id = 'dueDateLabel'\n  dueDate.id = 'dueDate'\n\n  buttonDiv.className = `FormItem`\n  buttonDiv.id = `buttonDiv`\n  button.id = 'button'\n\n  titleLabel.innerHTML = `Todo Name`\n  descLabel.innerHTML = `Description`\n  dueDateLabel.innerHTML = `Due Date`\n  button.innerHTML = `Add`\n\n  // making dom tree of form\n  formDiv.appendChild(form)\n  form.appendChild(titleDiv)\n  titleDiv.appendChild(titleLabel)\n  titleDiv.appendChild(title)\n  form.appendChild(descDiv)\n  descDiv.appendChild(descLabel)\n  descDiv.appendChild(desc)\n  form.appendChild(dueDateDiv)\n  dueDateDiv.appendChild(dueDateLabel)\n  dueDateDiv.appendChild(dueDate)\n  form.appendChild(buttonDiv)\n  buttonDiv.appendChild(button)\n  \n  return {formDiv}\n})()\n\nlet sideBarIcon = (() => {\n  let iconDiv = document.createElement('div')\n  const todooeyLogo = new Image();\n\n  todooeyLogo.src = _TodooeyLogo_png__WEBPACK_IMPORTED_MODULE_0__;\n  todooeyLogo.id = 'Logo'\n\n  iconDiv.id = 'iconDiv';\n\n  iconDiv.appendChild(todooeyLogo)\n\n  return {iconDiv}\n})();\n\nfunction populateSideBar() {\n  sidenav.appendChild(sideBarIcon.iconDiv)\n  sidenav.appendChild(sideBarForm.formDiv)\n}\n\n\n\n\n\n//# sourceURL=webpack://todo/./src/leftbar.js?");
+
+/***/ }),
+
+/***/ "./src/TodooeyLogo.png":
+/*!*****************************!*\
+  !*** ./src/TodooeyLogo.png ***!
+  \*****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"744c00e32299a6e16c9e.png\";\n\n//# sourceURL=webpack://todo/./src/TodooeyLogo.png?");
 
 /***/ })
 
@@ -181,6 +191,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -195,6 +217,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /************************************************************************/

@@ -1,5 +1,7 @@
 import './style.css'
 
-import {sideBarContents} from './leftbar.js'
+import {populateSideBar} from './leftbar.js'
 
-console.log(sideBarContents())
+let todooey = (() => {
+  populateSideBar()
+})()
