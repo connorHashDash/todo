@@ -75,6 +75,14 @@ input{
   border: 0;
 }
 
+#titleDiv{}
+
+#titleInput{
+  font-size: 1rem;
+  margin-top: 1rem;
+  height: 2rem;
+  width: 177px;
+}
 
 #descDiv{
   display: flex;
@@ -84,6 +92,7 @@ input{
 }
 
 #descLabel{
+  
 }
 
 #desc{
@@ -91,3 +100,11 @@ input{
   height: 90%;
   resize: none;
 }
+
+#dueDate{
+  margin-top: 1rem;
+  height: 2rem;
+  width: 177px;
+}
+
+

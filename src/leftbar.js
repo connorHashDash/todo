@@ -1,54 +1,70 @@
 const sidenav = document.getElementById('leftsidenav')
 import Logo from './TodooeyLogo.png'
+import {elementFactory} from './ElementMaker.js'
+
+let seeAllProjects = () => {
+  const seeAllDiv = elementFactory('div', {
+    id: 'seeAllDiv',
+    innerText: 'All Projects',
+  })
+
+  return seeAllDiv
+}
 
 let sideBarForm = (() => {
 
   //Creating form elements
-  const formDiv = document.createElement('div')
-  const form = document.createElement('form')
+  const formDiv = elementFactory('div', { 
+    id: 'formDiv' 
+  })
+  const form = elementFactory('form', { 
+    id: 'form', 
+  })
 
-  const titleDiv = document.createElement('div')
-  const titleLabel = document.createElement('label')
-  const title = document.createElement('input')
+  const titleDiv = elementFactory('div', {
+    id: 'titleDiv',
+    className: 'FormItem',
+  })
+  const titleLabel = elementFactory('label', {
+    id: 'titleLabel',
+    innerText: 'Todo Name',
+  })
+  const title = elementFactory('input', {
+    id: 'titleInput',
+  })
 
-  const descDiv = document.createElement('div')
-  const descLabel = document.createElement('label')
-  const desc = document.createElement('textarea')
+  const descDiv = elementFactory('div', {
+    id: 'discDiv', 
+    className: 'FormItem',
+  })
+  const descLabel = elementFactory('label', {
+    id: 'descLabel',
+    innerText: 'Description',
+  })
+  const desc = elementFactory('textarea', {
+    id: 'desc',
+  })
 
-  const dueDateDiv = document.createElement('div')
-  const dueDateLabel = document.createElement('label')
-  const dueDate = document.createElement('input')
+  const dueDateDiv = elementFactory('div', {
+    id: 'dueDateDiv', className: 'FormItem'
+  })
+  const dueDateLabel = elementFactory('label', {
+    id: 'dueDateLabel',
+    innerText: 'Due Date',
+  })
+  const dueDate = elementFactory('input', {
+    id: 'dueDate'
+  })
 
-  const buttonDiv = document.createElement('div')
-  const button = document.createElement('button')
+  const buttonDiv = elementFactory('div', {
+    id: 'buttonDiv',
+    className: 'FormItem',
+  })
+  const button = elementFactory('button', {
+    id: 'button',
+    innerText: 'Add'
+  })
   
-  //form ID's
-  formDiv.id = 'formDiv'
-  form.id = 'form'
-  
-  titleDiv.className =`FormItem`
-  titleDiv.id =`titleDiv`
-  titleLabel.id = 'titleLabel'
-  title.id = 'title'
-  
-  descDiv.className =`FormItem`
-  descDiv.id = 'descDiv'
-  descLabel.id = 'descLabel'
-  desc.id = 'desc'
-
-  dueDateDiv.className =`FormItem`
-  dueDateDiv.id = `dueDateDiv`
-  dueDateLabel.id = 'dueDateLabel'
-  dueDate.id = 'dueDate'
-
-  buttonDiv.className = `FormItem`
-  buttonDiv.id = `buttonDiv`
-  button.id = 'button'
-
-  titleLabel.innerHTML = `Todo Name`
-  descLabel.innerHTML = `Description`
-  dueDateLabel.innerHTML = `Due Date`
-  button.innerHTML = `Add`
 
   // making dom tree of form
   formDiv.appendChild(form)
@@ -82,8 +98,10 @@ let sideBarIcon = (() => {
 })();
 
 function populateSideBar() {
+  console.log(seeAllProjects())
   sidenav.appendChild(sideBarIcon.iconDiv)
   sidenav.appendChild(sideBarForm.formDiv)
+  sidenav.appendChild(seeAllProjects())
 }
 
 
