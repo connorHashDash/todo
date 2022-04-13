@@ -10,6 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
     new HtmlWebpackPlugin({
       title: 'Todooey',
       template: 'src/index.html',
+      favicon: 'src/TodooeyLogo.png',
     }),
   ],
    output: {

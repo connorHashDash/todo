@@ -27,10 +27,12 @@ let sideBarForm = (() => {
   })
   const titleLabel = elementFactory('label', {
     id: 'titleLabel',
+    htmlFor: 'tileInput',
     innerText: 'Todo Name',
   })
   const title = elementFactory('input', {
     id: 'titleInput',
+    name: 'titleInput',
   })
 
   const descDiv = elementFactory('div', {
@@ -40,9 +42,11 @@ let sideBarForm = (() => {
   const descLabel = elementFactory('label', {
     id: 'descLabel',
     innerText: 'Description',
+    htmlFor: 'desc',
   })
   const desc = elementFactory('textarea', {
     id: 'desc',
+    name: 'desc',
   })
 
   const dueDateDiv = elementFactory('div', {
@@ -50,10 +54,13 @@ let sideBarForm = (() => {
   })
   const dueDateLabel = elementFactory('label', {
     id: 'dueDateLabel',
+    htmlFor: 'dueDate',
     innerText: 'Due Date',
   })
   const dueDate = elementFactory('input', {
-    id: 'dueDate'
+    type: 'date',
+    id: 'dueDate',
+    name: 'dueDate',
   })
 
   const buttonDiv = elementFactory('div', {
