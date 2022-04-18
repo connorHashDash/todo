@@ -105,7 +105,6 @@ let sideBarIcon = (() => {
 })();
 
 function populateSideBar() {
-  console.log(seeAllProjects())
   sidenav.appendChild(sideBarIcon.iconDiv)
   sidenav.appendChild(sideBarForm.formDiv)
   sidenav.appendChild(seeAllProjects())
