@@ -26,16 +26,15 @@ html, body {
   display: flex;
   align-items: center;
   background-color: #EAEAEA ;
-  padding-left: .5rem;
 }
 
 .tabdiv{
   display: flex;
   height: 70%;
-  justify-content: center;
+  width: 248px;
+  justify-content: space-between;
   align-items: center;
   margin-left: .5rem;
-  margin-right: .5rem;
   padding-left: .5rem;
   padding-right: .3rem;
   background-color: rgba(169,169,169,1);
@@ -48,11 +47,28 @@ html, body {
   font-weight: 500;
 }
 
+.killTabHolder{
+  aspect-ratio: 1 / 1;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(169,169,169,1);
+  border-radius: 20px;
+  transition-duration: .3s;
+  cursor: pointer;
+}
+
+.killTabHolder:hover{
+  background-color: #494949;
+
+}
+
 .killTab{
   color: white;
   font-weight: 500;
-  font-size: 1.1rem;
-  margin-left: .1rem;
+  text-align: center;
+  transform: translate(0px, -1px);
 }
 
 #plusDiv{
@@ -62,6 +78,7 @@ html, body {
   justify-content: center;
   align-items: center;
   border-radius: 6px;
+  margin-left: .5rem;
   background-color: rgba(169,169,169,1);
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition-duration: .3s;

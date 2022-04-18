@@ -14,13 +14,18 @@ let tabMaker = (tabName) => {
     innerHTML: `${tabName}`
   })
 
+  let deleteButtonHolder = elementFactory('div', {
+    className: `killTabHolder`
+  })
+
   let deleteButton = elementFactory('div', {
     className: `killTab`,
     innerHTML: `&#10799`
   })
 
   container.appendChild(name)
-  container.appendChild(deleteButton)
+  deleteButtonHolder.appendChild(deleteButton)
+  container.appendChild(deleteButtonHolder)
   topBar.appendChild(container)
 }
 
