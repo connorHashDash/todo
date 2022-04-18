@@ -4,12 +4,26 @@ let topBar = document.getElementById('topnav')
 
 console.log(topBar)
 
-let tabMaker = () => {
-let container = elementFactory('div', {
-  id: 'tabdiv',
-  className: 'tab',
-})
+let tabMaker = (tabName) => {
+  let container = elementFactory('div', {
+    className: 'tabdiv',
+  })
+
+  let name = elementFactory('p', {
+    className: 'tabName',
+    innerHTML: `${tabName}`
+  })
+
+  let deleteButton = elementFactory('div', {
+    className: `killTab`,
+    innerHTML: `&#10799`
+  })
+
+  container.appendChild(name)
+  container.appendChild(deleteButton)
+  topBar.appendChild(container)
 }
+
 
 let plusSign = (() => {
 
@@ -32,3 +46,4 @@ let populateTopBar = () => {
 
 
 export {populateTopBar}
+export {tabMaker}
