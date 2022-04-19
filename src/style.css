@@ -98,7 +98,9 @@ html, body {
 }
 
 #display{
+  display: flex;
   width: 100%;
+
 }
 
 #leftsidenav {
@@ -228,4 +230,46 @@ input{
   background-color: #0082D5;
   cursor: pointer;
   box-shadow: none;
+}
+
+.toDoItem{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 260px;
+  margin-top: .5rem;
+  margin-left: .5rem;
+  height: 150px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition-duration: .3s;
+}
+
+.toDoItem:hover{
+  box-shadow:none;
+}
+
+.toDoName{
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 800;
+  color: white;
+  background-color: #0082D5;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.descDiv{
+  height: 100%;
+}
+
+.toDoDesc{
+  margin-left: 1rem;
+  margin-top: .5rem;
+}
+
+.toDoDueDate{
+  margin-right: .3rem;
+  margin-bottom: .2rem;
+  text-align: end;
 }
