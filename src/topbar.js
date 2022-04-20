@@ -24,7 +24,7 @@ let tabMaker = (tabName) => {
   container.appendChild(name)
   deleteButtonHolder.appendChild(deleteButton)
   container.appendChild(deleteButtonHolder)
-  topBar.appendChild(container)
+  topBar.insertBefore(container, topBar.children[topBar.children.length - 1])
 }
 
 

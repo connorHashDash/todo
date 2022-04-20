@@ -99,6 +99,7 @@ html, body {
 
 #display{
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
 
 }
@@ -202,12 +203,14 @@ input{
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   font-weight: 800;
+  cursor: pointer;
   box-shadow: 0 -4px 8px 0 rgba(0, 0, 0, 0.2), 0 -6px 20px 0 rgba(0, 0, 0, 0.19);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition-duration: .3s;
 }
 
 #seeAllDiv:hover{
   background-color: #383838;
+  box-shadow:none;
 }
 
 #buttonDiv{

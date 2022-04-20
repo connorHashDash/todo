@@ -33,6 +33,7 @@ let sideBarForm = (() => {
   const title = elementFactory('input', {
     id: 'titleInput',
     name: 'titleInput',
+    required: true,
   })
 
   const descDiv = elementFactory('div', {
@@ -47,6 +48,7 @@ let sideBarForm = (() => {
   const desc = elementFactory('textarea', {
     id: 'desc',
     name: 'desc',
+    required: true,
   })
 
   const dueDateDiv = elementFactory('div', {
@@ -61,6 +63,7 @@ let sideBarForm = (() => {
     type: 'date',
     id: 'dueDate',
     name: 'dueDate',
+    required: true,
   })
 
   const buttonDiv = elementFactory('div', {
