@@ -2,8 +2,6 @@ import {elementFactory} from './ElementMaker.js'
 
 let topBar = document.getElementById('topnav')
 
-console.log(topBar)
-
 let tabMaker = (tabName) => {
   let container = elementFactory('div', {
     className: 'tabdiv',

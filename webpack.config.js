@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
    mode: 'development',
    entry: {
      index: './src/index.js',
+     logic: './src/FormLogic.js',
    },
   plugins: [
     new HtmlWebpackPlugin({
@@ -14,7 +15,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
     }),
   ],
    output: {
-     filename: 'main.js',
+     filename: '[name].bundle.js',
      path: path.resolve(__dirname, 'dist'),
    },
    module: {
