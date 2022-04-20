@@ -9,7 +9,8 @@ let tabMaker = (tabName) => {
 
   let name = elementFactory('p', {
     className: 'tabName',
-    innerHTML: `${tabName}`
+    innerHTML: `${tabName}`,
+    contentEditable: true,
   })
 
   let deleteButtonHolder = elementFactory('div', {

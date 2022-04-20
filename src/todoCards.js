@@ -32,7 +32,7 @@ let toDoItem = (name, desc, dueDate) => {
 
   let toDoDueDate = elementFactory('p', {
     className: 'toDoDueDate',
-    innerHTML: dueDate,
+    innerHTML: `Deadline: ${dueDate}`,
   })
 
   nameDiv.appendChild(toDoName)

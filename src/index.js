@@ -5,9 +5,6 @@ import {populateTopBar} from './topbar.js'
 import {tabMaker} from './topbar.js'
 import {toDoItem} from './todoCards.js'
 
-tabMaker('hello')
-tabMaker('goodbye')
-
 let todooey = (() => {
   populateSideBar()
   populateTopBar()

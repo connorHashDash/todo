@@ -31,8 +31,10 @@ let Logic = (() => {
     form.reset()
   })
 
+  let j = 0
   tabGet.newTab.addEventListener('click', () => {
-    tabMaker('hello')
+    tabMaker(`Project${j}`)
+    j++
     
   })
 })()
