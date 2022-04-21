@@ -48,7 +48,6 @@ let sideBarForm = (() => {
   const desc = elementFactory('textarea', {
     id: 'desc',
     name: 'desc',
-    required: true,
   })
 
   const dueDateDiv = elementFactory('div', {
@@ -63,7 +62,6 @@ let sideBarForm = (() => {
     type: 'date',
     id: 'dueDate',
     name: 'dueDate',
-    required: true,
   })
 
   const buttonDiv = elementFactory('div', {
@@ -75,8 +73,7 @@ let sideBarForm = (() => {
     innerText: 'Add'
   })
   
-
-  // making dom tree of form
+  // making Dom tree of Form
   formDiv.appendChild(form)
   form.appendChild(titleDiv)
   titleDiv.appendChild(titleLabel)

@@ -19,7 +19,7 @@ let tabMaker = (tabName) => {
 
   let deleteButton = elementFactory('div', {
     className: `killTab`,
-    innerHTML: `&#10799`
+    innerHTML: `&#10799`,
   })
 
   container.appendChild(name)

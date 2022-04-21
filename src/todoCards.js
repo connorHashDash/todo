@@ -1,4 +1,5 @@
 import {elementFactory} from './ElementMaker.js'
+import {arrow} from './arrow.png'
 
 let display = document.getElementById('display')
 
@@ -7,7 +8,6 @@ let toDoItem = (name, desc, dueDate) => {
     className: 'toDoItem'
   })
 
-
   let nameDiv = elementFactory('div', {
     className: 'nameDiv'
   })
@@ -15,6 +15,18 @@ let toDoItem = (name, desc, dueDate) => {
   let toDoName = elementFactory('p', {
     className: 'toDoName',
     innerHTML: name,
+  })
+
+  let seeMore = elementFactory('div', {
+    className: 'seeMore',
+  })
+  
+  let tickBox = elementFactory('div', {
+    className: 'tickBox',
+  })
+
+  let buttonDiv = elementFactory('div', {
+    className: 'buttons',
   })
 
   let descDiv= elementFactory('div', {
@@ -36,10 +48,14 @@ let toDoItem = (name, desc, dueDate) => {
   })
 
   nameDiv.appendChild(toDoName)
+  buttonDiv.appendChild(seeMore)
+  buttonDiv.appendChild(tickBox)
+  nameDiv.appendChild(buttonDiv)
+  toDoHolder.appendChild(nameDiv)
+  
   descDiv.appendChild(toDoDesc)
   dueDateDiv.appendChild(toDoDueDate)
 
-  toDoHolder.appendChild(nameDiv)
   toDoHolder.appendChild(descDiv)
   toDoHolder.appendChild(dueDateDiv)
 
