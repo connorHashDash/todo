@@ -1,5 +1,4 @@
 import {elementFactory} from './ElementMaker.js'
-import {arrow} from './arrow.png'
 
 let display = document.getElementById('display')
 

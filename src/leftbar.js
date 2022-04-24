@@ -19,6 +19,7 @@ let sideBarForm = (() => {
   })
   const form = elementFactory('form', { 
     id: 'form', 
+    autocomplete: 'off',
   })
 
   const titleDiv = elementFactory('div', {
@@ -87,7 +88,7 @@ let sideBarForm = (() => {
   form.appendChild(buttonDiv)
   buttonDiv.appendChild(button)
   
-  return {formDiv}
+  return {formDiv, form}
 })()
 
 let sideBarIcon = (() => {
@@ -104,11 +105,22 @@ let sideBarIcon = (() => {
   return {iconDiv}
 })();
 
+let loadedOnce = false;
+
 function populateSideBar() {
   sidenav.appendChild(sideBarIcon.iconDiv)
   sidenav.appendChild(sideBarForm.formDiv)
-  sidenav.appendChild(seeAllProjects())
+  if (loadedOnce == false){
+    sidenav.appendChild(seeAllProjects())
+    loadedOnce = true
+  }
+}
+
+function populateForm () {
+  let target = document.getElementById('formDiv')
+  target.appendChild(sideBarForm.form)
 }
 
 
 export {populateSideBar}
+export {populateForm}
