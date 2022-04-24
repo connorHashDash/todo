@@ -7,14 +7,21 @@ let tabMaker = (tabName) => {
     className: 'tabdiv',
   })
 
+  container.addEventListener('click', () => {
+    
+  })
+
   let name = elementFactory('p', {
     className: 'tabName',
     innerHTML: `${tabName}`,
-    contentEditable: true,
   })
 
   let deleteButtonHolder = elementFactory('div', {
     className: `killTabHolder`
+  })
+
+  deleteButtonHolder.addEventListener('click', function() {
+    this.parentElement.remove()
   })
 
   let deleteButton = elementFactory('div', {

@@ -1,4 +1,6 @@
-let tabObj = (name, position) => {
+
+
+let tabObj = (name, position) => { // creates the tabs for an array in FormLogic
   return {name, position}
 }
 

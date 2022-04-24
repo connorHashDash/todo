@@ -43,6 +43,8 @@ let Logic = (() => {
     log(tabArr[j])
     j++
   })
+
+
 })()
 
 
