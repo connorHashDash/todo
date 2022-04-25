@@ -27,7 +27,7 @@ let populateSeeAllDiv = (title, number) => {
     className: 'buttonText',
     innerHTML: 'Open Project'
   })
-    
+  
   container.appendChild(projTitle)
   container.appendChild(open)
   open.appendChild(openText)
@@ -35,20 +35,22 @@ let populateSeeAllDiv = (title, number) => {
   return {container}
 }
 
-let seeAllButton = () => {
-  if (active == false){
-    clearDisplay()
-    console.log(active)
-    active = true;
-    return
-  }else if (active == true){
-    console.log(active)
-    active = false;
-    return
-  }
+
+let addProjButton = () => {
+  let container = elementFactory('div', {
+    id: 'newProjButton',
+  })
   
+  let buttonText = elementFactory('p', {
+    id: 'newProjText',
+    innerHTML: 'New Project',
+  })
+
+  container.appendChild(buttonText)
+
+  return {container}
 }
 
-
-export {seeAllButton}
 export {populateSeeAllDiv}
+export {addProjButton}
+export {clearDisplay}

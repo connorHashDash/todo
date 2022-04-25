@@ -2,13 +2,21 @@ import {elementFactory} from './ElementMaker.js'
 
 let topBar = document.getElementById('topnav')
 
-let tabMaker = (tabName) => {
+let tabMaker = (tabName, number) => {
   let container = elementFactory('div', {
     className: 'tabdiv',
   })
 
-  container.addEventListener('click', () => {
-    
+ let clicked = false;
+  container.addEventListener('click', function() {
+    if (clicked == false) {
+      this.style.backgroundColor = '#7B7B7B'
+      clicked = true;
+      return
+    }else if (clicked == true){
+      this.style.backgroundColor = 'darkgrey'
+      clicked = false;
+    }
   })
 
   let name = elementFactory('p', {
@@ -33,28 +41,6 @@ let tabMaker = (tabName) => {
   deleteButtonHolder.appendChild(deleteButton)
   container.appendChild(deleteButtonHolder)
   topBar.insertBefore(container, topBar.children[topBar.children.length - 1])
+  return {tabName, number}
 }
-
-
-let plusSign = (() => {
-
-  let plusSymHolder = elementFactory('div', {
-    id: 'plusDiv',
-  })
-
-  let plusSymbol = elementFactory('p', { 
-    id: 'plusSign',
-    innerHTML: '&#43;',
-  })
-  
-  plusSymHolder.appendChild(plusSymbol)
-  return {plusSymHolder}
-})()
-
-let populateTopBar = () => {
-  topBar.appendChild(plusSign.plusSymHolder)
-} 
-
-
-export {populateTopBar}
 export {tabMaker}
