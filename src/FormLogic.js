@@ -5,6 +5,9 @@ import {populateSeeAllDiv} from './seeAllLogic.js'
 import {tabObj} from './tabLogic.js'
 import {elementFactory} from './ElementMaker.js'
 import {addProjButton} from './seeAllLogic.js'
+import {seeAllButton} from './ProjLogic.js'
+import {tabArr} from './projectArray.js'
+import {clearDisplay} from './seeAllLogic.js'
 
 let form = document.getElementById('form')
 let log = console.log
@@ -24,11 +27,13 @@ let formGet = () => {
   return {form, Name, Desc, dueDate, button}
 }
 
-let tabArr = []
+let active = false;
+
 let Logic = (() => {
   let i = 0
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    if (!active == false) return
     tabArr[0][i + 1] = formGet();
     toDoItem(tabArr[0][i + 1].Name, tabArr[0][i + 1].Desc, tabArr[0][i + 1].dueDate);
     form.reset();
@@ -36,7 +41,7 @@ let Logic = (() => {
 
   let homeTab = (() => {
     tabArr[0] = []
-    tabMaker(`Home`);
+    tabMaker(`Home`, 0);
     tabArr[0][0] = tabObj(`Home`, 0);
   })()
 })()
@@ -44,14 +49,13 @@ let Logic = (() => {
 // The see all projects button underneath the form
 let seeAll = document.getElementById('seeAllDiv')
 
-let active = false;
-import {clearDisplay} from './seeAllLogic.js'
 
 let display = document.getElementById('display')
 seeAll.addEventListener('click', () => {
   if (active == false){
     display.style.flexDirection = 'column';
     active = true;
+    clearDisplay()
     for (let i = 0; i < tabArr.length; i++){
       display.appendChild(populateSeeAllDiv(tabArr[i][0].name, tabArr[i][0].position + 1).container)
     }
@@ -70,3 +74,4 @@ let todoPopulate = (position) => {
     toDoItem(tabArr[position][t + 1].name, tabArr[position][t + 1], tabArr[position][t + 1])
   }
 }
+

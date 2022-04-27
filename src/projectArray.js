@@ -1,0 +1,3 @@
+let tabArr = []
+
+export {tabArr}
