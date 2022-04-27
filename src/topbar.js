@@ -4,8 +4,24 @@ import {toDoItem} from './todoCards.js'
 import {clearDisplay} from './seeAllLogic.js'
 
 let topBar = document.getElementById('topnav')
+let currentProj = 0;
 
-let projNumber = 1
+let removeActives = () => {
+  let actives = document.getElementsByClassName('active')
+  for (let j = 0; j < actives.length; j++){
+    actives[j].classList.remove('active')
+  }
+}
+
+let printTodos = () => {
+  for (let i = 1; i < Object.keys(tabArr[currentProj]).length; ++i) {
+    console.log('this is i: ' + i)
+    console.log('targer is: ' + Object.keys(tabArr[currentProj].length))
+    toDoItem(tabArr[currentProj][i].Name, 
+      tabArr[currentProj][i].Desc, 
+      tabArr[currentProj][i].dueDate)
+  }
+}
 
 let tabMaker = (tabName, number) => {
   let container = elementFactory('div', {
@@ -13,21 +29,15 @@ let tabMaker = (tabName, number) => {
   })
   
 
- let clicked = false;
   container.addEventListener('click', function() {
-    if (clicked == false) {
-      clearDisplay()
-      this.style.backgroundColor = '#7B7B7B';
-      console.log(number)
-      for (let i = 1; i < Object.keys(tabArr[0]).length; i++) {
-        toDoItem(tabArr[number][i].name, tabArr[number][i].desc, tabArr[number][i].dueDate)
-      }
-      clicked = true;
-      return
-    }else if (clicked == true){
-      this.style.backgroundColor = 'darkgrey';
-      clicked = false;
-    }
+    clearDisplay()
+    currentProj = number
+    console.log(number)
+    removeActives()
+    printTodos()
+    this.className += ' active'
+    console.log(tabArr)
+    return
   })
 
   let name = elementFactory('p', {
@@ -59,3 +69,5 @@ let tabMaker = (tabName, number) => {
 
 
 export {tabMaker}
+export {removeActives}
+export {currentProj}

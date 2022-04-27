@@ -1,13 +1,17 @@
 import {populateSideBar} from './leftbar.js'
 import {populateForm} from './leftbar.js'
 import {elementFactory} from './ElementMaker.js'
+import {tabArr} from './projectArray.js'
+import {tabMaker} from './topbar.js'
 
 let display = document.getElementById('display')
 
-let active = false
-
 let clearDisplay = () => {
-  display.innerHTML = ``
+  display.innerHTML = ``;
+}
+
+let tabObj = (name, number) => {
+  return {name, number}
 }
 
 let populateSeeAllDiv = (title, number) => {
@@ -35,20 +39,41 @@ let populateSeeAllDiv = (title, number) => {
   return {container}
 }
 
-
 let addProjButton = () => {
-  let container = elementFactory('div', {
-    id: 'newProjButton',
+  let formContainer = elementFactory('div', {
+    id: 'newProjForm',
+    autocomplete: 'off',
   })
   
-  let buttonText = elementFactory('p', {
-    id: 'newProjText',
-    innerHTML: 'New Project',
+  let buttonContainer = elementFactory('div', {
+    id: 'newProjButton',
+    innerText: 'New Project'
   })
 
-  container.appendChild(buttonText)
+  let inputBox = elementFactory('input', {
+    id: 'newProjInput',
+    required: true,
+    autocomplete: 'off',
+  })
 
-  return {container}
+  buttonContainer.addEventListener('click', () => {
+    let newProjVal = document.getElementById('newProjInput').value;
+    if (!newProjVal == ''){
+      tabMaker(newProjVal, Object.keys(tabArr).length)
+      tabArr[Object.keys(tabArr).length] = []
+      tabArr[Object.keys(tabArr).length - 1][0] = tabObj(newProjVal, Object.keys(tabArr).length - 1);
+    }
+  clearDisplay()
+  for (let i = 0; i < Object.keys(tabArr).length; i++){
+    display.appendChild(populateSeeAllDiv(tabArr[i][0].name, tabArr[i][0].position + 1).container)
+    display.appendChild(formContainer)
+  }
+  })
+  
+  formContainer.appendChild(inputBox)
+  formContainer.appendChild(buttonContainer)
+
+  return {formContainer}
 }
 
 export {populateSeeAllDiv}

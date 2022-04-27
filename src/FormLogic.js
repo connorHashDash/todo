@@ -1,8 +1,8 @@
 // file is improperly named, it is the hub file for all the logic used in the app
 import {toDoItem} from './todoCards.js'
 import {tabMaker} from './topbar.js'
+import {removeActives} from './topbar.js'
 import {populateSeeAllDiv} from './seeAllLogic.js'
-import {tabObj} from './tabLogic.js'
 import {elementFactory} from './ElementMaker.js'
 import {addProjButton} from './seeAllLogic.js'
 import {seeAllButton} from './ProjLogic.js'
@@ -11,31 +11,35 @@ import {clearDisplay} from './seeAllLogic.js'
 
 let form = document.getElementById('form')
 let log = console.log
+let currentProj = 0;
 
 let tabGet = (() => {
   let topBar = document.getElementById('topnav');
-  
+ 
   return {topBar}
 })()
 
+let tabObj = (name, number) => {
+  return {name, number}
+}
 
 let formGet = () => {
   let Name = document.getElementsByName('titleInput')[0].value
   let Desc = document.getElementsByName('desc')[0].value
   let dueDate = document.getElementsByName('dueDate')[0].value
-  let button = document.getElementsByName('button')
-  return {form, Name, Desc, dueDate, button}
+  return {Name, Desc, dueDate}
 }
 
-let active = false;
-
 let Logic = (() => {
-  let i = 0
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (!active == false) return
-    tabArr[0][i + 1] = formGet();
-    toDoItem(tabArr[0][i + 1].Name, tabArr[0][i + 1].Desc, tabArr[0][i + 1].dueDate);
+    console.log(currentProj)
+    let currentTodo = tabArr[currentProj].length
+    tabArr[currentProj][currentTodo] = formGet();
+    toDoItem(
+      tabArr[currentProj][currentTodo].Name, 
+      tabArr[currentProj][currentTodo].Desc, 
+      tabArr[currentProj][currentTodo].dueDate);
     form.reset();
   })
 
@@ -52,21 +56,16 @@ let seeAll = document.getElementById('seeAllDiv')
 
 let display = document.getElementById('display')
 seeAll.addEventListener('click', () => {
-  if (active == false){
-    display.style.flexDirection = 'column';
-    active = true;
-    clearDisplay()
-    for (let i = 0; i < tabArr.length; i++){
-      display.appendChild(populateSeeAllDiv(tabArr[i][0].name, tabArr[i][0].position + 1).container)
-    }
-    display.appendChild(addProjButton().container)
-    return
-  }else if (active == true){
-    active = false;
-    display.style.flexDirection = 'null'
-    clearDisplay()
-    return
+  display.style.flexDirection = 'column';
+  removeActives()
+  clearDisplay()
+  for (let i = 0; i < Object.keys(tabArr).length; i++){
+    display.appendChild(populateSeeAllDiv(tabArr[i][0].name, tabArr[i][0].position + 1).container)
   }
+  display.appendChild(addProjButton().formContainer)
+  
+  
+  return
 })
 
 let todoPopulate = (position) => {
@@ -74,4 +73,3 @@ let todoPopulate = (position) => {
     toDoItem(tabArr[position][t + 1].name, tabArr[position][t + 1], tabArr[position][t + 1])
   }
 }
-

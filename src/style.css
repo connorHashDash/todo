@@ -43,8 +43,9 @@ html, body {
   cursor: pointer;
 }
 
-.tabdiv:hover{
+.active, .tabdiv:hover{
   box-shadow: none;
+  background-color: grey;
 }
 
 .tabName{
@@ -353,7 +354,29 @@ input{
   box-shadow: none;
 }
 
+#newProjForm{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-left: auto;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  height: 5rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+#newProjInput{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+  font-size: 1.5rem;
+}
+
 #newProjButton{
+  margin-top: 1rem;
   display: flex;
   font-size: 1.5rem;
   border: 0;
@@ -361,7 +384,6 @@ input{
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 2rem;
   padding-left: .5rem;
   padding-right: .5rem;
   height: 2rem;
