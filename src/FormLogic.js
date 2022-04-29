@@ -60,7 +60,7 @@ seeAll.addEventListener('click', () => {
   removeActives()
   clearDisplay()
   for (let i = 0; i < Object.keys(tabArr).length; i++){
-    display.appendChild(populateSeeAllDiv(tabArr[i][0].name, tabArr[i][0].position + 1).container)
+    display.appendChild(populateSeeAllDiv(tabArr[i][0].name, i).container)
   }
   display.appendChild(addProjButton().formContainer)
   

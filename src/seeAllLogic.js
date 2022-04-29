@@ -31,6 +31,12 @@ let populateSeeAllDiv = (title, number) => {
     className: 'buttonText',
     innerHTML: 'Open Project'
   })
+
+  open.addEventListener('click', () => {
+    console.log(number)
+    console.log(title)
+    tabMaker(title, number)
+  })
   
   container.appendChild(projTitle)
   container.appendChild(open)
