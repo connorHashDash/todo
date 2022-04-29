@@ -18,3 +18,4 @@ let findTodos = (projectNumber) => {
 
 export {tabArr}
 export {findProjects}
+export {findTodos}

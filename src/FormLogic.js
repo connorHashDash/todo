@@ -14,10 +14,8 @@ import {findProjects} from './projectArray.js'
 let form = document.getElementById('form')
 let log = console.log
 
-
 let tabGet = (() => {
   let topBar = document.getElementById('topnav');
- 
   return {topBar}
 })()
 
@@ -33,6 +31,8 @@ let formGet = () => {
 }
 
 let Logic = (() => {
+  let logo = document.getElementById('Logo')
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     let currentTodo = tabArr[currentProj].length
@@ -49,9 +49,7 @@ let Logic = (() => {
     tabMaker(`Home`, 0);
     tabArr[0][0] = tabObj(`Home`, 0);
   })()
-})()
 
-// The see all projects button underneath the form
 let seeAll = document.getElementById('seeAllDiv')
 
 let display = document.getElementById('display')
@@ -64,9 +62,11 @@ seeAll.addEventListener('click', () => {
   }
   display.appendChild(addProjButton().formContainer)
   
-  
   return
 })
+})()
+
+// The see all projects button underneath the form
 
 let todoPopulate = (position) => {
   for (let t = 0; t < tabArr[position].length; t++){

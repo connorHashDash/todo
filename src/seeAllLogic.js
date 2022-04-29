@@ -32,10 +32,12 @@ let populateSeeAllDiv = (title, number) => {
     innerHTML: 'Open Project'
   })
 
+  // creates the tab from the project menu, if the tab doesn't already exist
   open.addEventListener('click', () => {
-    console.log(number)
-    console.log(title)
-    tabMaker(title, number)
+    let exists = document.getElementById(`${title}`);
+    if (exists == null) {
+      tabMaker(title, number)
+    }
   })
   
   container.appendChild(projTitle)

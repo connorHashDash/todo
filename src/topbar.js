@@ -26,6 +26,7 @@ let printTodos = (number) => {
 let tabMaker = (tabName, number) => {
   let container = elementFactory('div', {
     className: 'tabdiv',
+    id: `${tabName}`,
   })
   
 
@@ -37,6 +38,8 @@ let tabMaker = (tabName, number) => {
     this.className += ' active'
     return
   })
+  
+  
 
   let name = elementFactory('p', {
     className: 'tabName',
