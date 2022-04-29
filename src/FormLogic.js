@@ -1,4 +1,5 @@
-// file is improperly named, it is the hub file for all the logic used in the app
+// File is improperly named, it is the hub file for all the logic used in the app
+import {currentProj} from './topbar.js'
 import {toDoItem} from './todoCards.js'
 import {tabMaker} from './topbar.js'
 import {removeActives} from './topbar.js'
@@ -8,10 +9,11 @@ import {addProjButton} from './seeAllLogic.js'
 import {seeAllButton} from './ProjLogic.js'
 import {tabArr} from './projectArray.js'
 import {clearDisplay} from './seeAllLogic.js'
+import {findProjects} from './projectArray.js'
 
 let form = document.getElementById('form')
 let log = console.log
-let currentProj = 0;
+
 
 let tabGet = (() => {
   let topBar = document.getElementById('topnav');
@@ -33,7 +35,6 @@ let formGet = () => {
 let Logic = (() => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(currentProj)
     let currentTodo = tabArr[currentProj].length
     tabArr[currentProj][currentTodo] = formGet();
     toDoItem(
@@ -52,7 +53,6 @@ let Logic = (() => {
 
 // The see all projects button underneath the form
 let seeAll = document.getElementById('seeAllDiv')
-
 
 let display = document.getElementById('display')
 seeAll.addEventListener('click', () => {
@@ -73,3 +73,4 @@ let todoPopulate = (position) => {
     toDoItem(tabArr[position][t + 1].name, tabArr[position][t + 1], tabArr[position][t + 1])
   }
 }
+log(findProjects())

@@ -4,6 +4,7 @@ import {toDoItem} from './todoCards.js'
 import {clearDisplay} from './seeAllLogic.js'
 
 let topBar = document.getElementById('topnav')
+
 let currentProj = 0;
 
 let removeActives = () => {
@@ -13,13 +14,12 @@ let removeActives = () => {
   }
 }
 
-let printTodos = () => {
-  for (let i = 1; i < Object.keys(tabArr[currentProj]).length; ++i) {
-    console.log('this is i: ' + i)
-    console.log('targer is: ' + Object.keys(tabArr[currentProj].length))
-    toDoItem(tabArr[currentProj][i].Name, 
-      tabArr[currentProj][i].Desc, 
-      tabArr[currentProj][i].dueDate)
+
+let printTodos = (number) => {
+  for (let i = 1; i < Object.keys(tabArr[number]).length; ++i) {
+    toDoItem(tabArr[number][i].Name, 
+      tabArr[number][i].Desc, 
+      tabArr[number][i].dueDate)
   }
 }
 
@@ -31,12 +31,10 @@ let tabMaker = (tabName, number) => {
 
   container.addEventListener('click', function() {
     clearDisplay()
-    currentProj = number
-    console.log(number)
     removeActives()
-    printTodos()
+    currentProj = number
+    printTodos(number)
     this.className += ' active'
-    console.log(tabArr)
     return
   })
 
