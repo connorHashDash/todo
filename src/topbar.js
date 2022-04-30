@@ -14,6 +14,12 @@ let removeActives = () => {
   }
 }
 
+let makeActive = (target) => {
+  removeActives()
+  let targetTab = document.getElementById(`${target}`)
+  targetTab.className += ' active'
+}
+
 
 let printTodos = (number) => {
   for (let i = 1; i < Object.keys(tabArr[number]).length; ++i) {
@@ -72,3 +78,4 @@ let tabMaker = (tabName, number) => {
 export {tabMaker}
 export {removeActives}
 export {currentProj}
+export {makeActive}

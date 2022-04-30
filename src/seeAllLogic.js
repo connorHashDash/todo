@@ -3,6 +3,8 @@ import {populateForm} from './leftbar.js'
 import {elementFactory} from './ElementMaker.js'
 import {tabArr} from './projectArray.js'
 import {tabMaker} from './topbar.js'
+import {findTodos} from './projectArray.js'
+import {makeActive} from './topbar.js'
 
 let display = document.getElementById('display')
 
@@ -37,6 +39,13 @@ let populateSeeAllDiv = (title, number) => {
     let exists = document.getElementById(`${title}`);
     if (exists == null) {
       tabMaker(title, number)
+      makeActive(title)
+      clearDisplay()
+      findTodos(number)
+    } else {
+      clearDisplay()
+      findTodos(number)
+      makeActive(title)
     }
   })
   

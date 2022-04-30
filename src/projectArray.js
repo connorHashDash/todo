@@ -1,4 +1,15 @@
+import {toDoItem} from './todoCards.js'
+
+let display = document.getElementById('display')
+
 let tabArr = []
+
+let localStorageRead = () => {
+  if (!localStorage.length == 0){
+  let stringArray = localStorage.getItem('appMemory')
+  tabArr = JSON.parse(stringArray)
+  }
+}
 
 let findProjects = () => {
   let projects = []
@@ -8,14 +19,15 @@ let findProjects = () => {
   return {projects}
 }
 
-let findTodos = (projectNumber) => {
-  let todos = []
-    for (let i = 1; i < tabArr[projectNumber].length; i++) {
-      todos[i] = tabArr[projectNumber][i]
-    }
-  return {todos}
+let findTodos = (number) => {
+  for (let i = 1; i < Object.keys(tabArr[number]).length; ++i) {
+    toDoItem(tabArr[number][i].Name, 
+      tabArr[number][i].Desc, 
+      tabArr[number][i].dueDate)
+  }
 }
 
 export {tabArr}
 export {findProjects}
 export {findTodos}
+export {localStorageRead}
