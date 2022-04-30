@@ -5,6 +5,7 @@ import {tabArr} from './projectArray.js'
 import {tabMaker} from './topbar.js'
 import {findTodos} from './projectArray.js'
 import {makeActive} from './topbar.js'
+import {projChanger} from './topbar.js'
 
 let display = document.getElementById('display')
 
@@ -37,11 +38,14 @@ let populateSeeAllDiv = (title, number) => {
   // creates the tab from the project menu, if the tab doesn't already exist
   open.addEventListener('click', () => {
     let exists = document.getElementById(`${title}`);
+    projChanger(number)
+    
     if (exists == null) {
       tabMaker(title, number)
       makeActive(title)
       clearDisplay()
       findTodos(number)
+
     } else {
       clearDisplay()
       findTodos(number)

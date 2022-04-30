@@ -91,5 +91,5 @@ seeAll.addEventListener('click', () => {
 })
 })()
 
-// fix kill tab button
 // make todos work and look pretty
+// make projects deletable

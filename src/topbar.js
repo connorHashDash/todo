@@ -7,6 +7,10 @@ let topBar = document.getElementById('topnav')
 
 let currentProj = 0;
 
+let projChanger = (input) => {
+  currentProj = input
+}
+
 let removeActives = () => {
   let actives = document.getElementsByClassName('active')
   for (let j = 0; j < actives.length; j++){
@@ -36,7 +40,7 @@ let tabMaker = (tabName, number) => {
   })
   
 
-  container.addEventListener('click', function() {
+  container.addEventListener('click', function(e) {
     clearDisplay()
     removeActives()
     currentProj = number
@@ -56,8 +60,17 @@ let tabMaker = (tabName, number) => {
     className: `killTabHolder`
   })
 
-  deleteButtonHolder.addEventListener('click', function() {
+  deleteButtonHolder.addEventListener('click', function(e) {
+    e.stopPropagation()
     this.parentElement.remove()
+    let nextTab = document.getElementById('topnav').children
+    if (!currentProj == number) {
+      return
+    } else if (nextTab.length == 0) {
+      clearDisplay()
+    } else {
+      nextTab[0].click()
+    }
   })
 
   let deleteButton = elementFactory('div', {
@@ -79,3 +92,4 @@ export {tabMaker}
 export {removeActives}
 export {currentProj}
 export {makeActive}
+export {projChanger}
