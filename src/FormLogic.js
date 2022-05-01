@@ -28,7 +28,11 @@ let formGet = () => {
   let Name = document.getElementsByName('titleInput')[0].value
   let Desc = document.getElementsByName('desc')[0].value
   let dueDate = document.getElementsByName('dueDate')[0].value
-  return {Name, Desc, dueDate}
+  let priority = 0
+  if (dueDate = ''){
+    dueDate = 'none'
+  }
+  return {Name, Desc, dueDate, priority}
 }
 
 let localStorageCommit = () => {
@@ -70,6 +74,7 @@ let Logic = (() => {
       tabArr[currentProj][currentTodo].dueDate);
     form.reset();
     localStorageCommit()
+    log(tabArr)
   })
 
   let homeTab = (() => {
@@ -79,7 +84,6 @@ let Logic = (() => {
     tabArr[0][0] = tabObj(`Home`, 0);
     } else {
       displayProjectsList()
-      log('works')
     }
   })()
 
@@ -92,4 +96,5 @@ seeAll.addEventListener('click', () => {
 })()
 
 // make todos work and look pretty
-// make projects deletable
+// make projects and todos deletable
+// make flex direction correct itself

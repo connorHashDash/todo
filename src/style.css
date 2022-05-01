@@ -240,13 +240,12 @@ input{
 }
 
 .toDoItem{
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 260px;
   margin-top: .5rem;
   margin-left: .5rem;
-  height: 150px;
+  height: 170px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition-duration: .3s;
@@ -275,19 +274,6 @@ input{
   margin-left: .2rem;
 }
 
-.buttons{
-  display: flex;
-  margin-right: .5rem;
-}
-
-.seeMore{
-  background: url('./hamburger.png');
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 2rem;
-  height: 1.2rem;
-}
 
 .tickBox{
   border: 1px  solid;
@@ -297,22 +283,82 @@ input{
   border: 1px #67B2E1 solid;
 }
 
-.descDiv{
+/* todo tab styling */
+.todoTabs{
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px black solid;
+}
+
+.descTab{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: darkgrey;
+  cursor: pointer;
+}
+
+.dueDateTab, .priorityTab {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-left: 1px black solid;
+  background-color: darkgrey;
+  cursor: pointer;
+  transition-duration: .3s;
+}
+
+.tabActive, .descTab:hover, .dueDateTab:hover, .priorityTab:hover{
+  background-color: grey;
+}
+
+.infoDiv{
+  display: flex;
   height: 100%;
 }
 
-.toDoDesc{
+.priorityDiv{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.bubbleHolder{
+  display: flex;
+  align-items: center;
   margin-left: 1rem;
-  margin-top: .5rem;
 }
 
-.toDoDueDate{
-  margin-right: .3rem;
-  margin-bottom: .2rem;
-  text-align: end;
+.green{
+  background-color: green;
+  height: .8rem;
+  width: .8rem;
+  border-radius: 10px;
+  border: 1px black solid;
+  margin-left: .1rem;
+
 }
 
-/* See all projects seciont */
+.orange{
+  background-color: orange;
+  height: .8rem;
+  width: .8rem;
+  border-radius: 10px;
+  border: 1px black solid;
+  margin-left: .1rem;
+}
+
+.red{
+  background-color: red;
+  height: .8rem;
+  width: .8rem;
+  border-radius: 10px;
+  border: 1px black solid;
+  margin-left: .1rem;
+}
+
+/* See all projects secion */
 
 .projectDiv{
   display: flex;

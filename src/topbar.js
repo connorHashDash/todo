@@ -4,6 +4,7 @@ import {toDoItem} from './todoCards.js'
 import {clearDisplay} from './seeAllLogic.js'
 
 let topBar = document.getElementById('topnav')
+let display = document.getElementById('display')
 
 let currentProj = 0;
 
@@ -29,7 +30,8 @@ let printTodos = (number) => {
   for (let i = 1; i < Object.keys(tabArr[number]).length; ++i) {
     toDoItem(tabArr[number][i].Name, 
       tabArr[number][i].Desc, 
-      tabArr[number][i].dueDate)
+      tabArr[number][i].dueDate,
+      tabArr[number][i].priority)
   }
 }
 
@@ -46,6 +48,7 @@ let tabMaker = (tabName, number) => {
     currentProj = number
     printTodos(number)
     this.className += ' active'
+    display.style.flexDirection = 'row';
     return
   })
   

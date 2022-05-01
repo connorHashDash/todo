@@ -45,11 +45,12 @@ let populateSeeAllDiv = (title, number) => {
       makeActive(title)
       clearDisplay()
       findTodos(number)
-
+      display.style.flexDirection = 'row';
     } else {
       clearDisplay()
       findTodos(number)
       makeActive(title)
+        display.style.flexDirection = 'row';
     }
   })
   
