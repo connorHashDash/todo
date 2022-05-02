@@ -1,4 +1,7 @@
 import {elementFactory} from './ElementMaker.js'
+import {tabArr} from './projectArray.js'
+import {editArray} from './projectArray.js'
+import {currentProj} from './topbar.js'
 
 let display = document.getElementById('display')
 
@@ -35,12 +38,12 @@ let todoTabs = () => {
     innerHTML: 'Priority',
   })
 
-  //appending todo list tabs to holder
+  //Appending todo list tabs to holder
   tabHolder.appendChild(descTab)
   tabHolder.appendChild(dueDateTab)
   tabHolder.appendChild(priorityTab)
   
-  //appending text to the tabs
+  //Appending text to the tabs
   descTab.appendChild(descTabText)
   dueDateTab.appendChild(dueDateText)
   priorityTab.appendChild(priorityText)
@@ -50,7 +53,7 @@ let todoTabs = () => {
 }
 
 //Create the page when description tab is clicked
-let descPage = (desc, dueDate) => {
+let descPage = (desc) => {
   let descDiv= elementFactory('div', {
     className: 'descDiv'
   })
@@ -60,13 +63,23 @@ let descPage = (desc, dueDate) => {
     innerHTML: desc,
   })
 
+  let penIcon = elementFactory('i', {
+    className: 'fas fa-pen'
+  })
+
+  penIcon.addEventListener('click', () => {
+    toDoDesc.contentEditable = true;
+  })
   
   descDiv.appendChild(toDoDesc)
+  toDoDesc.appendChild(penIcon)
 
   return {descDiv}
 }
 
 let dueDatePage = (dueDate) => {
+  console.log(dueDate)
+  console.log(tabArr)
   if (dueDate == '') {
     dueDate = 'none'
   }
@@ -81,7 +94,7 @@ let dueDatePage = (dueDate) => {
     innerHTML: `${deadline} ${dueDate}`,
   })
 
-  dueDateDiv.appendChild(toDoDueDate)
+  dueDateDiv.appendChild(toDoDueDate);
   
   return {dueDateDiv}
 }
@@ -105,40 +118,38 @@ let priorityPage = () => {
     className: 'bubbleHolder',
   })
 
-  let bubble1 = elementFactory('div', {
-    className: 'green',
+  let bubble3 = elementFactory('div', {
+    className: 'red',
   })
 
   let bubble2 = elementFactory('div', {
     className: 'orange',
   })
 
-  let bubble3 = elementFactory('div', {
-    className: 'red',
+  let bubble1 = elementFactory('div', {
+    className: 'green',
   })
 
-  //append bubbles to parent node
-  bubbleHolder.appendChild(bubble1)
-  bubbleHolder.appendChild(bubble2)
-  bubbleHolder.appendChild(bubble3)
+  //Append bubbles to parent node
+  bubbleHolder.appendChild(bubble3);
+  bubbleHolder.appendChild(bubble2);
+  bubbleHolder.appendChild(bubble1);
 
-  labelDiv.appendChild(priorityLabel)
+  //Attach label to div
+  labelDiv.appendChild(priorityLabel);
 
   holderDiv.appendChild(labelDiv)
   holderDiv.appendChild(bubbleHolder)
 
-  return {holderDiv}
+  return {holderDiv, bubble1, bubble2, bubble3}
 }
-
 //The function which creates the todo item and appends them to the document
-let toDoItem = (name, desc, dueDate, priority) => {
+let toDoItem = (name, desc, dueDate, priority, number) => {
+  console.log('priority: ' + priority)
 
-  if (priority > 0) {
-    return
-  } else {
-    priority = 0
-  }
-
+  
+  console.log(number)
+  
   let todoDiv = elementFactory('div', {
     className: 'toDoItem'
   })
@@ -146,6 +157,16 @@ let toDoItem = (name, desc, dueDate, priority) => {
   let nameDiv = elementFactory('div', {
     className: 'nameDiv'
   })
+
+  if (priority == 0){
+    nameDiv.style.backgroundColor = '#0082D5'
+  } else if (priority == 1){
+    nameDiv.style.backgroundColor = 'green'
+  } else if (priority == 2) {
+    nameDiv.style.backgroundColor = 'orange'
+  } else if (priority == 3){
+    nameDiv.style.backgroundColor = 'red'
+  }
 
   let toDoName = elementFactory('p', {
     className: 'toDoName',
@@ -167,7 +188,7 @@ let toDoItem = (name, desc, dueDate, priority) => {
   let tabs = todoTabs()
 
   let infoDiv = elementFactory('div', {
-    id: 'infoDiv'
+    className: 'infoDiv'
   })
 
   let removeActives = (siblings) => {
@@ -179,6 +200,7 @@ let toDoItem = (name, desc, dueDate, priority) => {
 
   let dueDateDiv = dueDatePage(dueDate)
 
+  let priorityDiv = priorityPage()
 
   tabs.descTab.addEventListener('click', function() {
     let siblings = this.parentElement.children
@@ -193,7 +215,6 @@ let toDoItem = (name, desc, dueDate, priority) => {
     removeActives(siblings)
     this.className += ' tabActive'
     infoDiv.innerHTML =''
-    console.log(dueDateDiv.dueDateDiv)
     infoDiv.appendChild(dueDateDiv.dueDateDiv)
   })
 
@@ -202,7 +223,25 @@ let toDoItem = (name, desc, dueDate, priority) => {
     removeActives(siblings);
     this.className += ' tabActive';
     infoDiv.innerHTML = '';
-    infoDiv.appendChild(priorityPage().holderDiv)
+    infoDiv.appendChild(priorityDiv.holderDiv)
+  })
+
+  priorityDiv.bubble1.addEventListener('click', function() {
+    this.parentElement.parentElement.parentElement.parentElement.children[0].style.backgroundColor ='green';
+    priority = 1;
+    editArray(number, 'priority', priority)
+  })
+
+  priorityDiv.bubble2.addEventListener('click', function() {
+    this.parentElement.parentElement.parentElement.parentElement.children[0].style.backgroundColor ='orange';
+    priority = 2;
+    editArray(number, 'priority', priority)
+  })
+
+  priorityDiv.bubble3.addEventListener('click', function() {
+    this.parentElement.parentElement.parentElement.parentElement.children[0].style.backgroundColor ='red';
+    priority = 3;
+    editArray(number, 'priority', priority)
   })
 
   tabs.descTab.className += ' tabActive'

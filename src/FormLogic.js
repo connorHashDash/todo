@@ -11,6 +11,7 @@ import {tabArr} from './projectArray.js'
 import {clearDisplay} from './seeAllLogic.js'
 import {findProjects} from './projectArray.js'
 import {localStorageRead} from './projectArray.js'
+import {localStorageCommit} from './projectArray.js'
 
 let form = document.getElementById('form')
 let log = console.log
@@ -23,24 +24,15 @@ let tabGet = (() => {
 let tabObj = (name, number) => {
   return {name, number}
 }
+let i = 1
 
 let formGet = () => {
   let Name = document.getElementsByName('titleInput')[0].value
   let Desc = document.getElementsByName('desc')[0].value
   let dueDate = document.getElementsByName('dueDate')[0].value
   let priority = 0
-  if (dueDate = ''){
-    dueDate = 'none'
-  }
-  return {Name, Desc, dueDate, priority}
+  return {Name, Desc, dueDate, priority, Number}
 }
-
-let localStorageCommit = () => {
-  localStorage.setItem('appMemory', JSON.stringify(tabArr))
-  log(localStorage.getItem('appMemory'))
-  log(tabArr)
-}
-
 
 localStorageRead()
 
@@ -50,7 +42,6 @@ let Logic = (() => {
 
   logo.addEventListener('click', () => {
     localStorage.clear()
-    log(localStorage)
   })
 
   let display = document.getElementById('display')
@@ -68,10 +59,14 @@ let Logic = (() => {
     e.preventDefault();
     let currentTodo = tabArr[currentProj].length
     tabArr[currentProj][currentTodo] = formGet();
+    tabArr[currentProj][currentTodo].Number = currentTodo
     toDoItem(
       tabArr[currentProj][currentTodo].Name, 
       tabArr[currentProj][currentTodo].Desc, 
-      tabArr[currentProj][currentTodo].dueDate);
+      tabArr[currentProj][currentTodo].dueDate,
+      tabArr[currentProj][currentTodo].priority,
+      tabArr[currentProj][currentTodo].Number,
+      )
     form.reset();
     localStorageCommit()
     log(tabArr)
@@ -95,6 +90,7 @@ seeAll.addEventListener('click', () => {
 })
 })()
 
-// make todos work and look pretty
+// make todos editable and edits storable
+// home div active on startup
 // make projects and todos deletable
 // make flex direction correct itself
