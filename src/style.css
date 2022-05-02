@@ -318,6 +318,11 @@ input{
 .infoDiv{
   display: flex;
   height: 100px;
+  overflow-y: auto;
+}
+
+.toDoDesc{
+  width: 100%;
 }
 
 .priorityDiv{

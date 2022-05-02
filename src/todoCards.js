@@ -67,14 +67,10 @@ let descPage = (desc) => {
     className: 'fas fa-pen'
   })
 
-  penIcon.addEventListener('click', () => {
-    toDoDesc.contentEditable = true;
-  })
-  
   descDiv.appendChild(toDoDesc)
-  toDoDesc.appendChild(penIcon)
+  descDiv.appendChild(penIcon)
 
-  return {descDiv}
+  return {descDiv, penIcon, toDoDesc}
 }
 
 let dueDatePage = (dueDate) => {
@@ -201,6 +197,14 @@ let toDoItem = (name, desc, dueDate, priority, number) => {
   let dueDateDiv = dueDatePage(dueDate)
 
   let priorityDiv = priorityPage()
+
+  descDiv.penIcon.addEventListener('click', () => {
+    descDiv.toDoDesc.contentEditable = true;
+    descDiv.toDoDesc.focus()
+    descDiv.toDoDesc.addEventListener('input', function() {
+      editArray(number, 'desc', descDiv.toDoDesc.innerHTML)
+    })
+  })
 
   tabs.descTab.addEventListener('click', function() {
     let siblings = this.parentElement.children

@@ -40,14 +40,16 @@ let findTodos = (number) => {
 }
 
 let editArray = (Number, valToChange, newVal) => {
+  console.log(Number)
+  console.log(valToChange)
+  console.log('new value' + newVal)
   for(let i = 1; i < tabArr[currentProj].length; i++) { 
     if (Number == tabArr[currentProj][i].Number){
       if (valToChange == 'priority'){
         tabArr[currentProj][i].priority = newVal
       } else if (valToChange == 'desc') {
         tabArr[currentProj][i].Desc = newVal
-      }
-      console.log(tabArr[currentProj][i].priority)
+      } 
     }
   }
   localStorageCommit()
