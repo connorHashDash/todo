@@ -36,7 +36,6 @@ let formGet = () => {
 
 localStorageRead()
 
-
 let Logic = (() => {
   let logo = document.getElementById('Logo')
 
@@ -77,6 +76,8 @@ let Logic = (() => {
     tabArr[0] = []
     tabMaker(`Home`, 0);
     tabArr[0][0] = tabObj(`Home`, 0);
+    let home = document.getElementById('Home')
+    home.classList += ' active'
     } else {
       displayProjectsList()
     }
@@ -90,7 +91,5 @@ seeAll.addEventListener('click', () => {
 })
 })()
 
-// make todos editable and edits storable
-// home div active on startup
+// make todos dates editable and have a countdown
 // make projects and todos deletable
-// make flex direction correct itself

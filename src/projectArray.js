@@ -40,17 +40,29 @@ let findTodos = (number) => {
 }
 
 let editArray = (Number, valToChange, newVal) => {
-  console.log(Number)
-  console.log(valToChange)
-  console.log('new value' + newVal)
+  console.log(newVal)
   for(let i = 1; i < tabArr[currentProj].length; i++) { 
     if (Number == tabArr[currentProj][i].Number){
       if (valToChange == 'priority'){
         tabArr[currentProj][i].priority = newVal
       } else if (valToChange == 'desc') {
         tabArr[currentProj][i].Desc = newVal
-      } 
+      } else if (valToChange == 'date') {
+        tabArr[currentProj][i].dueDate = newVal
+      } else if (valToChange == 'name') {
+        tabArr[currentProj][i].Name = newVal
+      }
     }
+  }
+  localStorageCommit()
+}
+//tabArr.splice(number, 1)
+//let currentProj = tabArr[currentProj].length
+
+let deleteTodo = (number) => {
+  tabArr[currentProj].splice(number, 1)
+  for(let j = number; j < tabArr[currentProj].length; j++){
+    tabArr[currentProj][j].Number--
   }
   localStorageCommit()
 }
@@ -61,3 +73,4 @@ export {findTodos}
 export {localStorageRead}
 export {editArray}
 export {localStorageCommit}
+export {deleteTodo}

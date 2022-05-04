@@ -31,7 +31,8 @@ let printTodos = (number) => {
     toDoItem(tabArr[number][i].Name, 
       tabArr[number][i].Desc, 
       tabArr[number][i].dueDate,
-      tabArr[number][i].priority)
+      tabArr[number][i].priority,
+      tabArr[number][i].Number,)
   }
 }
 
@@ -96,3 +97,4 @@ export {removeActives}
 export {currentProj}
 export {makeActive}
 export {projChanger}
+export {printTodos}

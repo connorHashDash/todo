@@ -2,6 +2,9 @@ import {elementFactory} from './ElementMaker.js'
 import {tabArr} from './projectArray.js'
 import {editArray} from './projectArray.js'
 import {currentProj} from './topbar.js'
+import {formatDistanceToNow} from 'date-fns'
+import {printTodos} from './topbar.js'
+import {deleteTodo} from './projectArray.js'
 
 let display = document.getElementById('display')
 
@@ -74,26 +77,59 @@ let descPage = (desc) => {
 }
 
 let dueDatePage = (dueDate) => {
-  console.log(dueDate)
-  console.log(tabArr)
-  if (dueDate == '') {
-    dueDate = 'none'
+  let dateProcess = () => {
+    let dateArray = dueDate.split('-');
+    let relativeDate = formatDistanceToNow(new Date(dateArray[0], parseFloat(dateArray[1]) - 1, dateArray[2]));
+    if (dueDate == '') {
+      dueDate = 'none'
+    }
+    return {relativeDate, dateArray}
   }
 
+  
+  let relativeDate = dateProcess(dueDate).relativeDate;
+  let dateArray = dateProcess(dueDate).dateArray;
+  
   let deadline = 'Deadline: '
   let dueDateDiv = elementFactory('div', {
     className: 'dueDateDiv',
   })
 
-  let toDoDueDate = elementFactory('p', {
-    className: 'toDoDueDate',
-    innerHTML: `${deadline} ${dueDate}`,
+  let casualCountdown = elementFactory('p', {
+    className: 'timeLeftText',
+    innerHTML: `Due in ${relativeDate}`
   })
 
-  dueDateDiv.appendChild(toDoDueDate);
+  let dueDateText = elementFactory('p', {
+    className: 'toDoDueDate',
+    innerHTML: `${deadline} ${dateArray[2]}/${dateArray[1]}/${dateArray[0]}`,
+  })
+
+  let textDiv = elementFactory('div', {
+    className: 'dueDateTextDiv',
+  })
+
+  let changeDateButton = elementFactory('div', {
+    className: 'DateButton',
+  })
+
+  let changeDateText = elementFactory('p', {
+    className: 'DateButtonText',
+    innerHTML: `Change Deadline`,
+  })
+
+  //text content goes into the text div
+  textDiv.appendChild(dueDateText);
+  textDiv.appendChild(casualCountdown);
+  dueDateDiv.appendChild(textDiv);
+
+  //adds the edit button to the div
+  changeDateButton.appendChild(changeDateText);
+  dueDateDiv.appendChild(changeDateButton);
   
-  return {dueDateDiv}
+  return {dueDateDiv, casualCountdown, changeDateButton}
 }
+
 
 // creates the priority tab, with three "bubbles" which allow you to select the priority.
 let priorityPage = () => {
@@ -132,26 +168,23 @@ let priorityPage = () => {
   bubbleHolder.appendChild(bubble1);
 
   //Attach label to div
-  labelDiv.appendChild(priorityLabel);
 
   holderDiv.appendChild(labelDiv)
   holderDiv.appendChild(bubbleHolder)
 
   return {holderDiv, bubble1, bubble2, bubble3}
 }
+
+
 //The function which creates the todo item and appends them to the document
 let toDoItem = (name, desc, dueDate, priority, number) => {
-  console.log('priority: ' + priority)
 
-  
-  console.log(number)
-  
   let todoDiv = elementFactory('div', {
-    className: 'toDoItem'
+    className: 'toDoItem',
   })
 
   let nameDiv = elementFactory('div', {
-    className: 'nameDiv'
+    className: 'nameDiv',
   })
 
   if (priority == 0){
@@ -164,9 +197,27 @@ let toDoItem = (name, desc, dueDate, priority, number) => {
     nameDiv.style.backgroundColor = 'red'
   }
 
+  let nameTextDiv = elementFactory('div',{
+    className: 'nameTextDiv'
+  })
+
   let toDoName = elementFactory('p', {
     className: 'toDoName',
     innerHTML: name,
+  })
+
+  toDoName.addEventListener('click', function() {
+    this.contentEditable = 'true'
+    this.focus()
+    this.addEventListener('input', function() {
+      editArray(number, 'name', this.innerHTML)
+      toDoName.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter'){
+          console.log(this)
+          this.contentEditable = 'false'
+        }
+      })
+    })
   })
   
   let tickBox = elementFactory('div', {
@@ -198,12 +249,35 @@ let toDoItem = (name, desc, dueDate, priority, number) => {
 
   let priorityDiv = priorityPage()
 
-  descDiv.penIcon.addEventListener('click', () => {
-    descDiv.toDoDesc.contentEditable = true;
-    descDiv.toDoDesc.focus()
-    descDiv.toDoDesc.addEventListener('input', function() {
-      editArray(number, 'desc', descDiv.toDoDesc.innerHTML)
-    })
+  let deleteDiv = elementFactory('div', {
+    className: 'deleteDiv',
+  })
+
+  let deleteIcon = elementFactory('i', {
+    className: 'fa fa-trash',
+  })
+
+  deleteDiv.appendChild(deleteIcon)
+  // Event Listeners & functions for everything in the todos
+  tickBox.addEventListener('click', function() {
+    if (this.style.backgroundColor == ''){
+      this.parentElement.parentElement.style.opacity = '70%'
+      this.style.backgroundColor = 'black'
+      this.style.opacity = '90%'
+      infoDiv.innerHTML = ''
+      infoDiv.appendChild(deleteDiv)
+      deleteIcon.addEventListener('click', function() {
+        display.innerHTML = ''
+        deleteTodo(number)
+        printTodos(currentProj)
+      })
+    } else {
+      this.parentElement.parentElement.style.opacity = '100%'
+      this.style.backgroundColor = '';
+      this.style.opacity = '40%'
+      infoDiv.innerHTML = ''
+      infoDiv.appendChild(descDiv.descDiv)
+    }
   })
 
   tabs.descTab.addEventListener('click', function() {
@@ -230,6 +304,41 @@ let toDoItem = (name, desc, dueDate, priority, number) => {
     infoDiv.appendChild(priorityDiv.holderDiv)
   })
 
+  descDiv.penIcon.addEventListener('click', () => {
+    descDiv.toDoDesc.contentEditable = true;
+    descDiv.toDoDesc.focus()
+    descDiv.toDoDesc.addEventListener('input', function() {
+      editArray(number, 'desc', descDiv.toDoDesc.innerHTML)
+    })
+  })
+
+  dueDateDiv.changeDateButton.addEventListener('click', function() {
+    if (this.parentElement.children[1].className !== 'date'){
+      let dateInput = elementFactory('input', {
+        type: 'date',
+        className: 'date'
+        })
+      dateInput.focus()
+      this.innerHTML = 'Submit';
+      this.addEventListener('click', function() {
+        if (dateInput.value == '') {
+          return
+        } else {
+          editArray(number, 'date', dateInput.value)
+          display.innerHTML = ''
+          for (let i = 1; i < Object.keys(tabArr[currentProj]).length; ++i) {
+            toDoItem(tabArr[currentProj][i].Name, 
+              tabArr[currentProj][i].Desc, 
+              tabArr[currentProj][i].dueDate,
+              tabArr[currentProj][i].priority,
+              tabArr[currentProj][i].Number,)
+          }
+        }
+      })
+      this.parentElement.insertBefore(dateInput, this.parentElement.children[1])
+    }
+  })
+
   priorityDiv.bubble1.addEventListener('click', function() {
     this.parentElement.parentElement.parentElement.parentElement.children[0].style.backgroundColor ='green';
     priority = 1;
@@ -250,7 +359,9 @@ let toDoItem = (name, desc, dueDate, priority, number) => {
 
   tabs.descTab.className += ' tabActive'
 
-  nameDiv.appendChild(toDoName)
+  nameTextDiv.appendChild(toDoName)
+  nameTextDiv.appendChild(dueDateDiv.casualCountdown)
+  nameDiv.appendChild(nameTextDiv)
   buttonDiv.appendChild(tickBox)
   nameDiv.appendChild(buttonDiv)
   todoDiv.appendChild(nameDiv)

@@ -51,6 +51,7 @@ html, body {
 .tabName{
   color: white;
   font-weight: 500;
+  transition-duration: .3s;
 }
 
 .killTabHolder{
@@ -242,13 +243,18 @@ input{
 .toDoItem{
   flex-direction: column;
   justify-content: space-between;
-  width: 260px;
+  width: 300px;
   margin-top: .5rem;
   margin-left: .5rem;
-  height: 170px;
+  height: 200px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition-duration: .3s;
+}
+
+.nameTextDiv{
+  display: flex;
+  align-items: baseline;
 }
 
 .nameDiv{
@@ -257,6 +263,12 @@ input{
   align-items: center;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+}
+
+.timeLeftText{
+  color: white;
+  font-size: .8rem;
+  margin-left: .2rem;
 }
 
 .toDoItem:hover{
@@ -277,14 +289,31 @@ input{
   border: 1px  solid;
   width: 1rem;
   height: 1rem;
-  margin-left: .2rem;
-  border: 1px #67B2E1 solid;
+  margin-right: .4rem;
+  border: 1px black solid;
+  border-radius: 10px;
+  cursor: pointer;
+  transition-duration: .3s;
+  opacity: 50%;
 }
 
-.infoDiv{
-  height: 90px;
+.tickBox:hover{
+  border: 1px black solid;
+  opacity: 90%;
 }
 
+.deleteDiv{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.fa-trash{
+  height: auto;
+  font-size: 5rem;
+  margin-top: 2rem;
+  cursor: pointer;
+}
 
 /* todo tab styling */
 .todoTabs{
@@ -317,7 +346,7 @@ input{
 
 .infoDiv{
   display: flex;
-  height: 100px;
+  height: 120px;
   overflow-y: auto;
 }
 
@@ -330,7 +359,6 @@ input{
   width: 100%;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
 }
 
 .priorityLabel{
@@ -340,7 +368,6 @@ input{
 .bubbleHolder{
   display: flex;
   align-items: center;
-  margin-left: 1rem;
 }
 
 .green{
@@ -371,6 +398,52 @@ input{
   border: 1px black solid;
   margin-left: .1rem;
   cursor: pointer;
+}
+
+/*Due date tab styling*/
+
+.dueDateDiv{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.toDoDueDate{
+  text-align: center;
+}
+
+.DateButton{
+  background-color: #0082D5;
+  color: white;
+  height: 1.5rem;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+  transition-duration: .3s;
+}
+
+.date{
+  width: 7rem;
+  border: 1px black solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.DateButton:hover{
+  box-shadow: none;
+}
+
+.DateButtonText{
+  color: white;
 }
 
 /* See all projects secion */

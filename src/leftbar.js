@@ -63,6 +63,7 @@ let sideBarForm = (() => {
     type: 'date',
     id: 'dueDate',
     name: 'dueDate',
+    required: true,
   })
 
   const buttonDiv = elementFactory('div', {
