@@ -83,5 +83,4 @@ seeAll.addEventListener('click', () => {
 })
 })()
 
-// make projects deletable
 // fix todo tab when clicking the ticked button
