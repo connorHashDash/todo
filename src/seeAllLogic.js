@@ -6,6 +6,8 @@ import {tabMaker} from './topbar.js'
 import {findTodos} from './projectArray.js'
 import {makeActive} from './topbar.js'
 import {projChanger} from './topbar.js'
+import {deleteProject} from './projectArray.js'
+import {removeActives} from './topbar.js'
 
 let display = document.getElementById('display')
 
@@ -17,6 +19,16 @@ let tabObj = (name, number) => {
   return {name, number}
 }
 
+let displayProjectsList = () => {
+  display.style.flexDirection = 'column';
+  removeActives()
+  clearDisplay()
+  for (let i = 0; i < Object.keys(tabArr).length; i++){
+    display.appendChild(populateSeeAllDiv(tabArr[i][0].name, i).container)
+  }
+  display.appendChild(addProjButton().formContainer)
+}
+
 let populateSeeAllDiv = (title, number) => {
   let container = elementFactory('div', {
     className: 'projectDiv',
@@ -24,6 +36,16 @@ let populateSeeAllDiv = (title, number) => {
   let projTitle = elementFactory('p', {
     className: 'projectName',
     innerHTML: title,
+  })
+  let rightSideDiv = elementFactory('div', {
+    className: 'rightSideDiv',
+  })
+
+  let deleteDiv = elementFactory('div', {
+    className: 'trashDiv'
+  })
+  let deleteIcon = elementFactory('i', {
+    className: 'fa fa-trash menuTrash',
   })
   
   let open = elementFactory('div', {
@@ -33,6 +55,12 @@ let populateSeeAllDiv = (title, number) => {
   let openText = elementFactory('p', {
     className: 'buttonText',
     innerHTML: 'Open Project'
+  })
+
+  deleteIcon.addEventListener('click', function() {
+    deleteProject(number)
+    display.innerHTML = ''
+    displayProjectsList()
   })
 
   // creates the tab from the project menu, if the tab doesn't already exist
@@ -47,16 +75,21 @@ let populateSeeAllDiv = (title, number) => {
       findTodos(number)
       display.style.flexDirection = 'row';
     } else {
-      clearDisplay()
-      findTodos(number)
-      makeActive(title)
-        display.style.flexDirection = 'row';
+      clearDisplay();
+      findTodos(number);
+      makeActive(title);
+      display.style.flexDirection = 'row';
     }
   })
   
-  container.appendChild(projTitle)
-  container.appendChild(open)
+  
   open.appendChild(openText)
+  container.appendChild(projTitle)
+  rightSideDiv.appendChild(open)
+
+  deleteDiv.appendChild(deleteIcon)
+  rightSideDiv.appendChild(deleteDiv)
+  container.appendChild(rightSideDiv)
 
   return {container}
 }
@@ -101,3 +134,4 @@ let addProjButton = () => {
 export {populateSeeAllDiv}
 export {addProjButton}
 export {clearDisplay}
+export {displayProjectsList}

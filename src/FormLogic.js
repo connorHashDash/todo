@@ -12,6 +12,7 @@ import {clearDisplay} from './seeAllLogic.js'
 import {findProjects} from './projectArray.js'
 import {localStorageRead} from './projectArray.js'
 import {localStorageCommit} from './projectArray.js'
+import {displayProjectsList} from './seeAllLogic.js'
 
 let form = document.getElementById('form')
 let log = console.log
@@ -44,15 +45,6 @@ let Logic = (() => {
   })
 
   let display = document.getElementById('display')
-  let displayProjectsList = () => {
-  display.style.flexDirection = 'column';
-  removeActives()
-  clearDisplay()
-  for (let i = 0; i < Object.keys(tabArr).length; i++){
-    display.appendChild(populateSeeAllDiv(tabArr[i][0].name, i).container)
-  }
-  display.appendChild(addProjButton().formContainer)
-  }
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -91,5 +83,5 @@ seeAll.addEventListener('click', () => {
 })
 })()
 
-// make todos dates editable and have a countdown
-// make projects and todos deletable
+// make projects deletable
+// fix todo tab when clicking the ticked button

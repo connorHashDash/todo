@@ -14,9 +14,6 @@ let localStorageRead = () => {
 
 let localStorageCommit = () => {
   localStorage.setItem('appMemory', JSON.stringify(tabArr))
-  console.log(tabArr)
-  console.log(localStorage)
-
 }
 
 let findProjects = () => {
@@ -33,14 +30,12 @@ let findTodos = (number) => {
       tabArr[number][i].Desc, 
       tabArr[number][i].dueDate,
       tabArr[number][i].priority,
-      tabArr[number][i].Number,
-    )
+      tabArr[number][i].Number,)
       
   }
 }
 
 let editArray = (Number, valToChange, newVal) => {
-  console.log(newVal)
   for(let i = 1; i < tabArr[currentProj].length; i++) { 
     if (Number == tabArr[currentProj][i].Number){
       if (valToChange == 'priority'){
@@ -56,8 +51,14 @@ let editArray = (Number, valToChange, newVal) => {
   }
   localStorageCommit()
 }
-//tabArr.splice(number, 1)
-//let currentProj = tabArr[currentProj].length
+
+let deleteProject = (number) => {
+  tabArr.splice(number, 1)
+  for (let k = number; k < tabArr.length; k++){
+    tabArr[k][0].number--
+  }
+  localStorageCommit()
+}
 
 let deleteTodo = (number) => {
   tabArr[currentProj].splice(number, 1)
@@ -74,3 +75,4 @@ export {localStorageRead}
 export {editArray}
 export {localStorageCommit}
 export {deleteTodo}
+export {deleteProject}

@@ -213,6 +213,8 @@ input{
   transition-duration: .3s;
 }
 
+
+
 #seeAllDiv:hover{
   background-color: #383838;
   box-shadow:none;
@@ -463,8 +465,23 @@ input{
 }
 
 .projectName{
+  text-align: center;
   font-size: 1.2rem;
   font-weight: 600;
+  max-width: 250px;
+  width: 200px;
+}
+
+.rightSideDiv{
+  display: flex;
+  align-items: center;
+}
+
+.menuTrash{
+  font-size: 1rem;
+  color: black;
+  margin-top: 0;
+  margin-left: 1rem;
 }
 
 .openButton{
