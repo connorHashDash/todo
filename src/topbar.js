@@ -32,7 +32,9 @@ let printTodos = (number) => {
       tabArr[number][i].Desc, 
       tabArr[number][i].dueDate,
       tabArr[number][i].priority,
-      tabArr[number][i].Number,)
+      tabArr[number][i].Number,
+      tabArr[number][i].checked,
+    )
   }
 }
 

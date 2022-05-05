@@ -14,6 +14,7 @@ let localStorageRead = () => {
 
 let localStorageCommit = () => {
   localStorage.setItem('appMemory', JSON.stringify(tabArr))
+  console.log(tabArr)
 }
 
 let findProjects = () => {
@@ -30,7 +31,9 @@ let findTodos = (number) => {
       tabArr[number][i].Desc, 
       tabArr[number][i].dueDate,
       tabArr[number][i].priority,
-      tabArr[number][i].Number,)
+      tabArr[number][i].Number,
+      tabArr[number][i].checked,
+    )
       
   }
 }
@@ -46,6 +49,8 @@ let editArray = (Number, valToChange, newVal) => {
         tabArr[currentProj][i].dueDate = newVal
       } else if (valToChange == 'name') {
         tabArr[currentProj][i].Name = newVal
+      } else if (valToChange == 'checked') {
+        tabArr[currentProj][i].checked = newVal
       }
     }
   }

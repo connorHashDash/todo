@@ -177,7 +177,7 @@ let priorityPage = () => {
 
 
 //The function which creates the todo item and appends them to the document
-let toDoItem = (name, desc, dueDate, priority, number) => {
+let toDoItem = (name, desc, dueDate, priority, number, checked) => {
 
   let todoDiv = elementFactory('div', {
     className: 'toDoItem',
@@ -271,14 +271,20 @@ let toDoItem = (name, desc, dueDate, priority, number) => {
         deleteTodo(number)
         printTodos(currentProj)
       })
+        checked = true;
+        editArray(number, 'checked', true)
     } else {
       this.parentElement.parentElement.style.opacity = '100%'
       this.style.backgroundColor = '';
       this.style.opacity = '40%'
       infoDiv.innerHTML = ''
       infoDiv.appendChild(descDiv.descDiv)
+      checked = false;
+        editArray(number, 'checked', false)
     }
   })
+  console.log(checked)
+
 
   tabs.descTab.addEventListener('click', function() {
     let siblings = this.parentElement.children
@@ -375,6 +381,11 @@ let toDoItem = (name, desc, dueDate, priority, number) => {
   
   // puts tab into the display div 
   display.appendChild(todoDiv)
+  if (checked == true){
+    console.log('hello')
+    tickBox.click()
+  }
+  console.log(tabArr)
 }
 
 export {toDoItem}

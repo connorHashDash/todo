@@ -32,7 +32,8 @@ let formGet = () => {
   let Desc = document.getElementsByName('desc')[0].value
   let dueDate = document.getElementsByName('dueDate')[0].value
   let priority = 0
-  return {Name, Desc, dueDate, priority, Number}
+  let checked = false
+  return {Name, Desc, dueDate, priority, Number, checked}
 }
 
 localStorageRead()
@@ -57,7 +58,7 @@ let Logic = (() => {
       tabArr[currentProj][currentTodo].dueDate,
       tabArr[currentProj][currentTodo].priority,
       tabArr[currentProj][currentTodo].Number,
-      )
+      tabArr[currentProj][currentTodo].checked,)
     form.reset();
     localStorageCommit()
     log(tabArr)
